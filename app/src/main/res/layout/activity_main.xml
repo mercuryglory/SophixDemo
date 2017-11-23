@@ -10,7 +10,7 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="我是第一次运行"
+        android:text="注意看这里，修复后会变"
         android:textSize="30sp"/>
 
 </RelativeLayout >

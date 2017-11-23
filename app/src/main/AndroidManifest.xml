@@ -10,13 +10,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".SophixStubApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".SophixStubApplication">
+        android:theme="@style/AppTheme" >
         <activity android:name=".MainActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter >
         </activity >
+
+        <!-- 埋桩,热修复不支持修改声明文件,预先定义一些组件 -->
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".Main3Activity" ></activity >
     </application >
 
 </manifest >
