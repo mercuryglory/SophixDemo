@@ -34,6 +34,8 @@ public class Main2Activity extends AppCompatActivity {
 
         tvContent.setText(PropertyUtil.getInstance().readCofigFile());
 
+        tvVersion.setText("版本号:" +BuildConfig.VERSION_NAME);
+
     }
 
     @OnClick({R.id.tv_content, R.id.btn_dependency})
