@@ -1,5 +1,7 @@
 package com.mercury.sophixdemo;
 
+import android.content.res.AssetManager;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -27,9 +29,11 @@ public class PropertyUtil {
 
     private PropertyUtil() {
         mProperties= new Properties();
-        InputStream inputStream = MyApplication.context.getResources().openRawResource(R.raw
-                .config);
+        AssetManager assets = MyApplication.context.getAssets();
         try {
+            InputStream inputStream = assets.open("config.properties");
+//        InputStream inputStream = MyApplication.context.getResources().openRawResource(R.raw
+//                .config);
             mProperties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
