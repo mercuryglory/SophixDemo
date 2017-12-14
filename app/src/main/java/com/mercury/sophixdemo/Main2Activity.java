@@ -1,8 +1,10 @@
 package com.mercury.sophixdemo;
 
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,11 +15,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.OnClick;
 
 public class Main2Activity extends BaseActivity {
 
+    private static final String TAG = "Main2Activity";
     @Bind(R.id.tv_content)
     TextView  tvContent;
     @Bind(R.id.btn_dependency)
@@ -67,8 +72,17 @@ public class Main2Activity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.item_music) {
             //播放
-            MediaPlayer player = MediaPlayer.create(this, R.raw.wangwangsent);
-            player.start();
+            MediaPlayer player = new MediaPlayer();
+            try {
+                AssetFileDescriptor shake = getResources().getAssets().openFd("shake.mp3");
+                player.setDataSource(shake.getFileDescriptor(),shake.getStartOffset(),shake.getLength());
+                player.prepare();
+                player.start();
+                Log.i(TAG, "播放成功");
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.i(TAG, e.getMessage());
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);
